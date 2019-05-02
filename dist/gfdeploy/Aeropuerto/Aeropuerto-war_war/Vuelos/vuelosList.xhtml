@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 template="../table-template.xhtml"
+                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+                 xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="table">
+        <h1>Lista de Vuelos</h1>
+        <h:form>
+            <h:dataTable value="#{vuelosController.findAll()}" var="v" border="5">
+                <h:column>
+                    <f:facet name="header">Número de vuelo</f:facet>
+                        #{v.numero_vuelo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Número de avión</f:facet>
+                        #{v.avion.numero_avion}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Origen</f:facet>
+                        #{v.origen.nombre}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Destino</f:facet>
+                        #{v.destino.nombre}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Inicio de vuelo</f:facet>
+                    <h:outputText value="#{v.fecha_inicio}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-6"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha fin de vuelo</f:facet>
+                    <h:outputText value="#{v.fecha_fin}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" timeZone="GMT-6"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hora inicio de vuelo</f:facet>
+                    <h:outputText value="#{v.hora_inicio}">
+                        <f:convertDateTime type="time" pattern="hh:mm aa" timeZone="GMT-6"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hora fin de vuelo</f:facet>
+                    <h:outputText value="#{v.hora_fin}">
+                        <f:convertDateTime type="time" pattern="hh:mm aa" timeZone="GMT-6"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Editar</f:facet>
+                    <h:commandButton value="Editar" action="#{vuelosController.prepareEdit(v)}"/> 
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Eliminar</f:facet>
+                    <h:commandButton value="Eliminar" action="#{vuelosController.prepareDelete()}" rendered="#{!vuelosController.confirm}"/> 
+                    <h:commandButton value="Si" rendered="#{vuelosController.confirm}" action="#{vuelosController.Delete(v)}"/>
+                    <h:commandButton value="No" rendered="#{vuelosController.confirm}" action="#{vuelosController.MainClean('vuelosList')}"/>
+                </h:column>
+
+                <f:facet name="footer">
+                    <h:commandButton class="btn btn-info" value="Agregar Nuevo" action="#{vuelosController.MainClean('vuelosAlta?faces-redirect=true')}"/> 
+                    <h:commandButton class="btn btn-light" value="Regresar" action="/index"/> 
+                </f:facet>
+            </h:dataTable>
+
+            <br/><br/>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+
+
+
+
