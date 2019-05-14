@@ -17,7 +17,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author white
+ * @author CDIS Desarrollo de Talento
  */
 @Named(value = "avionesController")
 @SessionScoped
