@@ -1,7 +1,11 @@
-**/build/
+Aeropuerto-ejb/build/
 
 
-**/dist/
+Aeropuerto-ejb/dist/
+
+Aeropuerto-war/build/
+
+Aeropuerto-war/dist/
 
 build/
 
