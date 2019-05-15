@@ -6,8 +6,9 @@
                  xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h1>Lista de Vuelos</h1>
-        <h:form>
+        <h1>Lista de Vuelos #{session.getAttribute('sesionUsuario').nombreUsuario}</h1>
+        <h:form rendered="#{session.getAttribute('sesionUsuario') != null}">
+            
             <h:dataTable value="#{vuelosController.findAll()}" var="v" border="5">
                 <h:column>
                     <f:facet name="header">Número de vuelo</f:facet>
