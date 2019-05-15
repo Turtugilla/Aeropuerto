@@ -13,8 +13,8 @@
     </h:head>
     <h:body>
         <div id="header">
-
-            <img style="float: left; padding-top: 20px; padding-left: 10px;" src="resources/images/logo-plane.png" />
+            <h:graphicImage style="float: left; padding-top: 20px; padding-left: 10px;" library="images"
+                            name="logo-plane.png"/>
 
 
             <div class="title">
@@ -28,7 +28,7 @@
 
 
         <div class="container content">
-            <ui:insert name="table">
+            <ui:insert name="content">
 
 
             </ui:insert>  
@@ -39,7 +39,8 @@
         <div id="footer">
             <div class="row">
                 <div class="col-md-4">
-                    <img id="logo-cdis"  src="resources/images/logo-cdis.png" />
+                    <h:graphicImage  library="images"
+                                    name="logo-cdis.png"/>
                 </div>
 
                 <div class="col-md-4 footer-center">
