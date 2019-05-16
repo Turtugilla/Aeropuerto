@@ -12,6 +12,7 @@ body{
     background-color: #4c5c68;
     font-family: 'Permanent Marker', cursive;
     font-family: 'Comfortaa', cursive;
+    color: #c5c3c6;
 }
 
 
@@ -25,6 +26,7 @@ body{
 .title h1{
     padding-top: 50px;
     font-family: 'Permanent Marker', cursive;
+    color: #040505;
 }
 
 
@@ -69,10 +71,32 @@ tbody tr:hover{
 
 }
 
+/**########## MESSAGES ############ **/
 
+.info{
+    color: blue;
+}
+
+.error{
+    color: #dc3545;
+}
 
 /**########## FORMS ############ **/
 
 .forms{
     color: #dcdcdd;
+}
+
+
+/**########## LOGIN ############ **/
+
+#login-form h1{
+    color: #c5c3c6;
+    margin-top: 15px;
+    font-weight: bolder;
+}
+
+#login-form{
+    margin-top: 100px;
+    background-color: #46494c;
 }
