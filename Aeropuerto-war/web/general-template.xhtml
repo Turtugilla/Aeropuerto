@@ -13,20 +13,55 @@
     </h:head>
     <h:body>
         <div id="header">
-            <h:graphicImage style="float: left; padding-top: 20px; padding-left: 10px;"  library="images"
-                            name="logo-plane.png"/>
+            <div class="row">
+                <div class="col">
+                    <h:graphicImage style="float: left; 
+                                    padding-top: 20px; 
+                                    padding-left: 10px;"  
+                                    library="images"
+                                    name="logo-plane.png"/>
+                </div>
+
+                <div class="col">
+                    <div class="title">
+                        <h1>
+                            Sistema de Control Aéreo
+                        </h1> 
+                    </div>
+                </div>
+
+                <div class="col"> 
+                    <div class="usuarioLogeado">
+                        <h:form>
+                            <h:commandButton 
+                                rendered="#{!usuarioController.usuarioLogeado()}" 
+                                value="Registrarse"
+                                class="btn btn-light"/>
 
 
-            <div class="title">
-                <h1>
-                    Sistema de Control Aéreo
-                </h1> 
+                            <h:outputText rendered="#{usuarioController.usuarioLogeado()}"
+                                          value="Bienvenido #{session.getAttribute('sesionUsuario').nombreUsuario} "
+                                          >
+
+                            </h:outputText>   
+                            <h:commandButton rendered="#{usuarioController.usuarioLogeado()}" 
+                                             value="Cerrar Sesión"
+                                             action="#{usuarioController.cerrarSesion()}"
+                                             class="btn btn-light"/>
+                        </h:form> 
+                    </div>
+                </div>
             </div>
+
         </div>
 
 
+
+
+
+
         <div class="container content">
-            <ui:insert name="content">
+            <ui:insert name="content" rendered="#{session.getAttribute('sesionUsuario') != null}">
 
 
             </ui:insert>  

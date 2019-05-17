@@ -23,16 +23,15 @@ public class UsuarioController implements Serializable {
 
     @EJB
     private UsuarioFacade usuarioFacade;
-    private Usuario usuario = new Usuario();
-    private Usuario sesionUsuario;
     private String nombreUsuario, pass;
 
     public UsuarioController() {
     }
 
     public String inicioSesion() {
-        Usuario currentUser = getUsuarioFacade().findByEmailAndPass(getNombreUsuario(), getPass());
-        
+        Usuario currentUser = getUsuarioFacade().
+                findByEmailAndPass(getNombreUsuario(), getPass());
+
         if (currentUser == null) {
             System.out.println("Usaurio o contraseña incorrecta");
             return null;
@@ -41,6 +40,20 @@ public class UsuarioController implements Serializable {
                     getSessionMap().put("sesionUsuario", currentUser);
             return "index";
         }
+    }
+
+    public boolean usuarioLogeado() {
+        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().
+                getSessionMap().get("sesionUsuario");
+        
+        return usuario != null;
+    }
+    
+    
+    public String cerrarSesion(){
+        FacesContext.getCurrentInstance().getExternalContext().
+                getSessionMap().put("sesionUsuario", null);
+        return "/login";
     }
 
     /**
@@ -55,34 +68,6 @@ public class UsuarioController implements Serializable {
      */
     public void setUsuarioFacade(UsuarioFacade usuarioFacade) {
         this.usuarioFacade = usuarioFacade;
-    }
-
-    /**
-     * @return the usuario
-     */
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    /**
-     * @return the sesionUsuario
-     */
-    public Usuario getSesionUsuario() {
-        return sesionUsuario;
-    }
-
-    /**
-     * @param sesionUsuario the sesionUsuario to set
-     */
-    public void setSesionUsuario(Usuario sesionUsuario) {
-        this.sesionUsuario = sesionUsuario;
     }
 
     /**

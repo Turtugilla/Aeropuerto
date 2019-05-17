@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h1>Lista de Vuelos #{session.getAttribute('sesionUsuario').nombreUsuario}</h1>
-        <h:form rendered="#{session.getAttribute('sesionUsuario') != null}">
+        <h:form>
             
             <h:dataTable value="#{vuelosController.findAll()}" var="v" border="5">
                 <h:column>
