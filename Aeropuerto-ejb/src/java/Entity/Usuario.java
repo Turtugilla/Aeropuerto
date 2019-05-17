@@ -17,7 +17,7 @@ import javax.persistence.Table;
  * @author CDIS Desarrollo de Talento
  */
 @Entity
-@Table(name = "Usuario", schema = "JGCR2019")
+@Table(name = "Usuario", schema = "Airport")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
