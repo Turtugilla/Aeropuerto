@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
 
-    @PersistenceContext(unitName = "Evidencia_8-ejbPU")
+    @PersistenceContext(unitName = "Aeropuerto-ejbPU")
     private EntityManager em;
 
     @Override
@@ -32,7 +32,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     public Usuario findByEmailAndPass(String nombreUsuario, String pass) {
         TypedQuery<Usuario> query;
-        query = em.createQuery("SELECT u FROM Usuario u WHERE u.nombreUsuario=:nombreUsuario AND u.pass=:pass", Usuario.class);
+        query = em.createQuery("SELECT u FROM Usuario u "
+                + "WHERE u.nombreUsuario=:nombreUsuario AND u.pass=:pass", Usuario.class);
         query.setParameter("nombreUsuario", nombreUsuario);
         query.setParameter("pass", pass);
         try {

@@ -25,7 +25,7 @@ public class EstadosFacade {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    @PersistenceContext(unitName = "Evidencia_8-ejbPU")
+    @PersistenceContext(unitName = "Aeropuerto-ejbPU")
     private EntityManager em;
     
     public List<Estados> findAll(){
