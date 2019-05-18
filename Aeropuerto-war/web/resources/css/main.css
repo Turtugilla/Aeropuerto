@@ -29,6 +29,10 @@ body{
     color: #040505;
 }
 
+@media screen and (min-width: 0px) and (max-width: 770px) {
+    .title{ display: none; } 
+}
+
 
 
 
@@ -99,4 +103,12 @@ tbody tr:hover{
 #login-form{
     margin-top: 100px;
     background-color: #46494c;
+}
+
+
+/**########## LOGIN ############ **/
+.usuarioLogeado{
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
 }
