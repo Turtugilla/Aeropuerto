@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
  * @author white
  */
 @Entity
-@Table(name = "Vuelos", schema = "JGCR2019")
+@Table(name = "Vuelos", schema = "Airport")
 @NamedQueries({
     @NamedQuery(name = "findVuelos", query = "Select v From Vuelos v"),
 })

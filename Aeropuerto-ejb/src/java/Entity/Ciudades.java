@@ -25,7 +25,7 @@ import javax.persistence.Table;
  * @author white
  */
 @Entity
-@Table(name = "Ciudades", schema = "JGCR2019")
+@Table(name = "Ciudades", schema = "Airport")
 @NamedQueries({
     @NamedQuery(name = "findCiudades", query = "Select c From Ciudades c"),
     @NamedQuery(name = "findByPais", query = "Select c From Ciudades c Where c.estado.pais.nombre =:nombrePais")
