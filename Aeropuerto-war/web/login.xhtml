@@ -20,7 +20,7 @@
                                  required="true" 
                                  class="form-control" 
                                  id="username" 
-                                 value="#{usuarioController.nombreUsuario}"/>
+                                 value="#{loginController.nombreUsuario}"/>
                     <small id="emailHelp"
                            class="form-text text-muted">
                         We'll never share your email with anyone else.
@@ -32,11 +32,11 @@
                                    required="true" 
                                    class="form-control" 
                                    id="password" 
-                                   value="#{usuarioController.pass}"/>
+                                   value="#{loginController.pass}"/>
                 </div>
                 <h:commandButton value="Entrar"
                                  class="btn-primary"
-                                 action="#{usuarioController.inicioSesion()}"/>
+                                 action="#{loginController.inicioSesion()}"/>
 
                 <h:messages errorClass="error" infoClass="info" />
 

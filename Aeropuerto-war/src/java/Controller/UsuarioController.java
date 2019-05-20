@@ -11,91 +11,64 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
 
 /**
  *
- * @author cdis
+ * @author CDIS Desarrollo de Talento
  */
 @Named(value = "usuarioController")
 @SessionScoped
 public class UsuarioController implements Serializable {
-
+    
+    
     @EJB
-    private UsuarioFacade usuarioFacade;
-    private String nombreUsuario, pass;
+    private UsuarioFacade ejbUsuario;
+    private Usuario currentUser;
 
+    /**
+     * Creates a new instance of UsuarioController
+     */
     public UsuarioController() {
-    }
-
-    public String inicioSesion() {
-        Usuario currentUser = getUsuarioFacade().
-                findByEmailAndPass(getNombreUsuario(), getPass());
-
-        if (currentUser == null) {
-            System.out.println("Usaurio o contraseña incorrecta");
-            return null;
-        } else {
-            FacesContext.getCurrentInstance().getExternalContext().
-                    getSessionMap().put("sesionUsuario", currentUser);
-            return "index";
-        }
-    }
-
-    public boolean usuarioLogeado() {
-        Usuario usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().
-                getSessionMap().get("sesionUsuario");
-        
-        return usuario != null;
+        currentUser = new Usuario();
     }
     
     
-    public String cerrarSesion(){
-        FacesContext.getCurrentInstance().getExternalContext().
-                getSessionMap().put("sesionUsuario", null);
-        return "/login";
+    
+    public void create(){
+        ejbUsuario.create(currentUser);
     }
 
     /**
-     * @return the usuarioFacade
+     * @return the ejbUsuario
      */
-    public UsuarioFacade getUsuarioFacade() {
-        return usuarioFacade;
+    public UsuarioFacade getEjbUsuario() {
+        return ejbUsuario;
     }
 
     /**
-     * @param usuarioFacade the usuarioFacade to set
+     * @param ejbUsuario the ejbUsuario to set
      */
-    public void setUsuarioFacade(UsuarioFacade usuarioFacade) {
-        this.usuarioFacade = usuarioFacade;
+    public void setEjbUsuario(UsuarioFacade ejbUsuario) {
+        this.ejbUsuario = ejbUsuario;
     }
 
     /**
-     * @return the nombreUsuario
+     * @return the currentUser
      */
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public Usuario getCurrentUser() {
+        return currentUser;
     }
 
     /**
-     * @param nombreUsuario the nombreUsuario to set
+     * @param currentUser the currentUser to set
      */
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setCurrentUser(Usuario currentUser) {
+        this.currentUser = currentUser;
     }
-
-    /**
-     * @return the pass
-     */
-    public String getPass() {
-        return pass;
-    }
-
-    /**
-     * @param pass the pass to set
-     */
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
+    
+    
+    
+    
+    
+    
 }

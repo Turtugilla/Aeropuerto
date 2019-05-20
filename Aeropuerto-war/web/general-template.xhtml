@@ -32,19 +32,20 @@
                     <div class="usuarioLogeado">
                         <h:form>
                             <h:commandButton 
-                                rendered="#{!usuarioController.usuarioLogeado()}" 
+                                rendered="#{!loginController.usuarioLogeado()}" 
                                 value="Registrarse"
-                                class="btn btn-light"/>
+                                class="btn btn-light"
+                                action="registro"/>
 
 
-                            <h:outputText rendered="#{usuarioController.usuarioLogeado()}"
+                            <h:outputText rendered="#{loginController.usuarioLogeado()}"
                                           value="Bienvenido #{session.getAttribute('sesionUsuario').nombreUsuario} "
                                           >
 
                             </h:outputText>   
-                            <h:commandButton rendered="#{usuarioController.usuarioLogeado()}" 
+                            <h:commandButton rendered="#{loginController.usuarioLogeado()}" 
                                              value="Cerrar Sesión"
-                                             action="#{usuarioController.cerrarSesion()}"
+                                             action="#{loginController.cerrarSesion()}"
                                              class="btn btn-light"/>
                         </h:form> 
                     </div>
