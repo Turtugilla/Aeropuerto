@@ -1,18 +1,16 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Aviones List</title>
-    </h:head>
-    <h:body>    
+<ui:composition  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                 template="../general-template.xhtml"
+                 xmlns:h="http://xmlns.jcp.org/jsf/html"
+                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                 xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
         <h1>Lista de Aviones</h1> 
         <h:form>
             <h:dataTable value="#{avionesController.finAll()}" var="a" border="5">
                 <h:column>
                     <f:facet name="header">Numero de Avion</f:facet>
-                    #{a.numero_avion}
+                        #{a.numero_avion}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Capacidad de pasajeros</f:facet>
@@ -20,13 +18,13 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">Modelo</f:facet>
-                    #{a.modelo}
+                        #{a.modelo}
                 </h:column>
                 <h:column>
                     <f:facet name="header">Aerolinea</f:facet>
-                    #{a.aerolinea}
+                        #{a.aerolinea}
                 </h:column>
-                
+
                 <h:column>
                     <f:facet name="header">Editar</f:facet>
                     <h:commandButton value="Editar" action="#{avionesController.prepareEdit(a)}"/> 
@@ -38,11 +36,13 @@
                     <h:commandButton value="No" rendered="#{avionesController.confirm}" action="#{avionesController.MainClean('avionesList')}"/>
                 </h:column>
             </h:dataTable>
-            
+
             <br/><br/>
             <h:commandButton value="Agregar nuevo" action="#{avionesController.MainClean('avionesAlta')}"/> 
             <h:commandButton value="Regresar" action="/index"/> 
         </h:form>
-    </h:body>
-</html>
+    </ui:define>
+
+</ui:composition>
+
 
